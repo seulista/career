@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dalbitlive.member.dao.MemberDao" >
+    <resultMap id="loginRoomOutMap" type="com.dalbitlive.member.vo.db.DBLoginRoomOutVo" />
+    <resultMap id="loginInfoOutMap" type="com.dalbitlive.member.vo.db.DBLoginInfoOutVo" />
+    <resultMap id="profImgOutMap" type="com.dalbitlive.member.vo.db.DBProfImgOutVo" />
+
+    <select id="callMemberLogin" statementType="CALLABLE" parameterType="ProcedureVo" resultMap="loginRoomOutMap,loginInfoOutMap,profImgOutMap">
+        CALL sp_member_login_ver2(#{data, mode=IN, jdbcType=VARCHAR}, #{ret, mode=OUT, jdbcType=INTEGER}, #{ext, mode=OUT, jdbcType=VARCHAR})
+    </select>
+
+    <select id="callMemberTokenInfo" statementType="CALLABLE" parameterType="ProcedureVo" resultMap="loginInfoOutMap,profImgOutMap">
+        CALL sp_member_token_select_ver2(#{data, mode=IN, jdbcType=VARCHAR}, #{ret, mode=OUT, jdbcType=INTEGER}, #{ext, mode=OUT, jdbcType=VARCHAR})
+    </select>
+
+    <select id="callMemberLogout" statementType="CALLABLE" parameterType="ProcedureVo">
+        CALL sp_member_logout_ver2(#{data, mode=IN, jdbcType=VARCHAR}, #{ret, mode=OUT, jdbcType=INTEGER}, #{ext, mode=OUT, jdbcType=VARCHAR})
+    </select>
+
+    <select id="callMemberSignUp" statementType="CALLABLE" parameterType="ProcedureVo" resultMap="loginInfoOutMap,profImgOutMap">
+        CALL sp_member_signup_ver2(#{data, mode=IN, jdbcType=VARCHAR}, #{ret, mode=OUT, jdbcType=INTEGER}, #{ext, mode=OUT, jdbcType=VARCHAR})
+    </select>
+</mapper>
