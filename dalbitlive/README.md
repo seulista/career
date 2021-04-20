@@ -9,6 +9,7 @@ BackEnd(Restful, Pay, Photo, Admin, DB), FrontEnd 개발 총괄<br />
 ## 개발 환경
 BackEnd : JAVA8, SpringBoot(2.2.1) + (Session, Security, JWT), mariaDB, Redis, Maven<br />
 FrontEnd : React 16.8
+ETC : node.js, WOWZA, antMedia
 
 ## 개발 툴
 IntelliJ, Git, Jenkins, Slack, DBeaver, Medis
